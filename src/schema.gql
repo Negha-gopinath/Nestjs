@@ -1,0 +1,89 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Book {
+  id: Int!
+  title: String!
+  author: String!
+  publishedAt: String!
+}
+
+type Borrow {
+  id: Int!
+  borrowedAt: String
+  returnedAt: String
+  user: User!
+  book: Book!
+}
+
+type User {
+  id: Int!
+  name: String!
+  email: String!
+  password: String!
+  borrowedBooks: [Borrow!]
+}
+
+type LoginResponse {
+  access_token: String!
+}
+
+type Query {
+  books: [Book!]!
+  book(id: Int!): Book!
+  users: [User!]!
+  user(id: Int!): User!
+  borrows: [Borrow!]!
+  borrow(id: Int!): Borrow!
+}
+
+type Mutation {
+  createBook(createBookInput: CreateBookInput!): Book!
+  updateBook(id: Int!, updateBookInput: CreateBookInput!): Book!
+  removeBook(id: Int!): Book!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(id: Int!, updateUserInput: CreateUserInput!): User!
+  removeUser(id: Int!): User!
+  createBorrow(createBorrowInput: CreateBorrowInput!): Borrow!
+  updateBorrow(id: Int!, updateBorrowInput: UpdateBorrowInput!): Borrow!
+  removeBorrow(id: Int!): Borrow!
+  login(loginUserInput: LoginUserInput!): LoginResponse!
+  register(registerUserInput: RegisterUserInput!): LoginResponse!
+}
+
+input CreateBookInput {
+  title: String!
+  author: String!
+  publishedAt: String!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+  password: String!
+}
+
+input CreateBorrowInput {
+  userId: Int!
+  bookId: Int!
+  borrowedAt: String!
+}
+
+input UpdateBorrowInput {
+  userId: Int!
+  bookId: Int!
+  borrowedAt: String!
+  returnedAt: String!
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+input RegisterUserInput {
+  name: String!
+  email: String!
+  password: String!
+}

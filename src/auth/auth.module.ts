@@ -1,4 +1,3 @@
-// auth.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PassportModule } from '@nestjs/passport';
@@ -25,4 +24,5 @@ import { AuthResolver } from './auth.resolver';
   ],
   providers: [AuthService, JwtStrategy, AuthResolver],
 })
-export class AuthModule {}
+export class AuthModule {
+}

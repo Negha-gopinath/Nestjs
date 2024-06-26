@@ -1,4 +1,4 @@
-// borrow.resolver.ts
+
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { BorrowService } from './borrow.service';
 import { UseGuards } from '@nestjs/common';

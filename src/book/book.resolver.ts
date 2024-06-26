@@ -6,17 +6,17 @@ import { CreateBookInput } from './dto/create-book.input';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Resolver(() => Book)
+@UseGuards(JwtAuthGuard)
 export class BookResolver {
   constructor(private readonly bookService: BookService) {}
 
   @Mutation(() => Book)
-  @UseGuards(JwtAuthGuard)
   createBook(@Args('createBookInput') createBookInput: CreateBookInput) {
     return this.bookService.create(createBookInput);
   }
 
   @Query(() => [Book], { name: 'books' })
-  findAll() {
+   findAll() {
     return this.bookService.findAll();
   }
 
@@ -26,7 +26,6 @@ export class BookResolver {
   }
 
   @Mutation(() => Book)
-  @UseGuards(JwtAuthGuard)
   updateBook(
     @Args('id', { type: () => Int }) id: number,
     @Args('updateBookInput') updateBookInput: CreateBookInput,
